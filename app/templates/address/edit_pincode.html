@@ -1,0 +1,59 @@
+{% extends "horzontal_dashboard.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container d-flex justify-content-center">
+	{% comment %} <div class="col-md-12 col-sm-12"> {% endcomment %}
+		<div class="full-card">
+				<form class="" method="POST" action= "" enctype="multipart/form-data">
+                    {% csrf_token %}
+				<!-- Start All Sec -->
+				<div class="tab-content">
+
+					<div id="settings" class="  active">
+						<div class="row no-mrg">
+							<h3>Add State</h3>
+							<div class="edit-pro">
+                                <div class="form-outline mb-4">
+									<label> Id</label>
+									<input type="text" class="form-control"  value="{{pincode.id}}"name="id" id="id" readonly >
+								</div>
+								<div class="form-outline mb-4">
+									<label>Pin Code</label>
+									<input type="text" class="form-control"  value="{{pincode.pincode}}"name="pincode" id="pincode" required >
+								</div>
+
+                                <div class="form-outline mb-4">
+									<label>City</label>
+
+                                        <select class="form-control" name="city" value="" id="city" required>
+                                            <center>
+												<option value="{{ item.id }}">{{pincode.city.name}}</option>
+												<option>Select State</option>
+													{% for item in citydata %}
+												{% if item.status != False %}
+												<option value="{{ item.id }}">{{item.name}}</option>
+												{% endif %}
+                                            	{% endfor %}
+                                            </center>
+                                        </select>
+
+
+
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-primary theme-bg full-width">Add</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Settings -->
+				</div>
+				<!-- Start All Sec -->
+            </form>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% load static %}
+<!--<!doctype html>-->
+<html lang="en">
+
+
+<head>
+    <!-- Basic Page Needs==================================================-->
+    <title>SIMS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS==================================================-->
+	 <link rel="stylesheet" href="{% static 'assets/bootstrap_5/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap_datetimepicker/bootstrap_datetimepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap_select/bootstrap_select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/datatables/dataTables.bootstrap5.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/jasny_bootstrap/jasny_bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/b-icons/font/bootstrap-icons.css' %}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    {% comment %} <link rel="stylesheet" href="{% static '/assets/plugins/css/plugins.css' %}"> {% endcomment %}
+    {% comment %} <link href="{% static '/assets/css/style.css' %}" rel="stylesheet"> {% endcomment %}
+    {% comment %} <link type="text/css" rel="stylesheet" id="jssDefault" href="{% static '/assets/css/colors/green-style.css' %}"> </head> {% endcomment %}
+
+<body>
+    <div class="Loader"></div>
+   
+		  <nav class="navbar navbar-expand-lg navbar-light bg-warning fs-5 fw-bold" >
+			<div class="container-fluid">
+			  <a class="navbar-brand" href="{% url 'app:index' %}">Admin Pannel</a>
+			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				  <li class="nav-item">
+					<a class="nav-link" href="{% url 'app:index' %}">Home</a>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  Qualifications
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:stream_detail_view' %}"> stream</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{%  url 'app:level_view' %}"> level </a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:specialization_view' %}"> specialization</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:qualification_view' %}">   Qualifications</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:View_Designation' %}">  Designation</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:View_Committe' %}">  Committe</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:View_fee_catogory' %}">  Fee Catogory</a></li>
+					</ul>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					 Address
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:country_view' %}"> Country</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:state_view' %}"> State </a></li>
+					 <li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:dist_view' %}"> District</a></li>
+					 <li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:talluk_view' %}">  Talluk</a></li>
+					 <li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:city_view' %}">  City</a></li>
+					 <li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:pincode_view' %}">  Pincode</a></li>
+					</ul>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  Personal Details
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:view_medium' %}">  Medium</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:view_Languge' %}">  Languge</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:view_Religion' %}">  Religion</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:view_Caste' %}">  Caste</a></li>
+						<li class="dropdown-item"><a style="text-decoration: none; color:black;" href="{% url 'app:view_Subcaste' %}">  Subcaste</a></li>
+					</ul>
+				  </li>
+
+				</ul>
+				 <form class="d-flex">
+				  <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+				<li class="nav-item">
+					<a class="nav-link" >{{request.user}}</a>
+				  </li>
+				</ul>
+				<a class="btn btn-success fs-5" href="{% url 'app:logout' %}">Logout</a>
+				</form> 
+				
+			  </div>
+			</div>
+		  </nav>
+		
+       
+        
+		  {% block content %}
+
+
+       {% endblock %}
+	   
+<script src="{% static 'assets/common_js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/common_js/popper.min.js' %}"></script>
+<script src="{% static 'assets/common_js/moment.min.js' %}"></script>
+<script src="{% static 'assets/common_js/lodash.min.js' %}"></script>
+<script src="{% static 'assets/common_js/jscolor.min.js' %}"></script>
+<script src="{% static 'assets/common_js/sweet_alert.min.js' %}"></script>
+{% comment %} <script src="{% static '/JS/dropdown.js' %}"></script>&ndash;&gt; {% endcomment %}
+<script src="{% static 'assets/bootstrap_datetimepicker/bootstrap_datetimepicker.min.js' %}"></script>
+<script src="{% static 'assets/bootstrap_select/bootstrap_select.min.js' %}"></script>
+<script src="{% static 'assets/datatables/dataTables.bootstrap5.min.js' %}"></script>
+<script src="{% static 'assets/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static  'assets/jasny_bootstrap/jasny_bootstrap.min.js' %}"></script>
+<script src="{% static 'javascript/jquery.js' %}"></script>
+<script src="{% static 'assets/js/jquery.js' %}"></script>
+<script src="{% static 'assets/js/jqueyTable.js' %}"></script>
+<script src="{% static 'assets/js/jQueryTable.js' %}"></script>
+
+
+
+</div>
+<script>
+	$(document).ready(function () {
+	$('table').DataTable()
+	});
+  </script>
+</body>
+</html>

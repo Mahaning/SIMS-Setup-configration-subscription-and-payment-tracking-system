@@ -1,0 +1,66 @@
+{% extends "horzontal_dashboard.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container d-flex justify-content-center">
+	{% comment %} <div class="col-md-12 col-sm-12"> {% endcomment %}
+		<div class="full-card">
+				<form class="" method="POST" action= "" enctype="multipart/form-data">
+                    {% csrf_token %}
+				<!-- Start All Sec -->
+				<div class="tab-content">
+
+					<div id="settings" class="  active">
+						<div class="row no-mrg">
+							<h3>Edit Sub Caste</h3>
+							<div class="edit-pro">
+                                <div class="form-outline mb-4">
+									<label>Id</label>
+									<input type="text" class="form-control" placeholder="Enter subcaste code" value="{{subcastedata.id}}"name="id" id="id " readonly >
+								</div>
+								<div class="form-outline mb-4">
+									<label>Subcaste Code</label>
+									<input type="text" class="form-control" placeholder="Enter subcaste code" value="{{subcastedata.subcaste_code}}"name="subcaste_code" id="subcaste_code " required >
+								</div>
+								<div class="form-outline mb-4">
+									<label>SubCaste Name</label>
+									<input type="text" class="form-control" placeholder="Enter subcaste name" value="{{subcastedata.subcaste_name}}"name="subcaste_name" id="subcaste_name" required >
+								</div>
+								<div class="form-outline mb-4">
+									<label>Cast</label>
+
+                                        <select class="form-control" name="caste" value="{{subcastedata.caste}}" id="caste" required>
+                                            <center>
+
+                                                <option value="{{ item.id }}">{{subcastedata.caste.caste_name}}</option>
+												<option>Select Cast</option>
+												{% for item in castedata %}
+												{% if item.status != False %}
+												<option value="{{ item.id }}">{{item.caste_name}}</option>
+												{% endif %}
+                                            	{% endfor %}
+                                            </center>
+                                        </select>
+
+								</div>
+<!--								<div class="form-outline mb-4">-->
+<!--									<label>caste_id</label>-->
+<!--									<input type="text" class="form-control" placeholder="Enter caste id" value=""name="caste_id" id="caste_id" required >-->
+<!--								</div>-->
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-primary theme-bg full-width">Add</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Settings -->
+				</div>
+				<!-- Start All Sec -->
+            </form>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock %}

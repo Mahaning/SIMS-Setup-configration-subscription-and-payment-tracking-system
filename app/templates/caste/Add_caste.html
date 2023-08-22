@@ -1,0 +1,66 @@
+{% extends "horzontal_dashboard.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container d-flex justify-content-center">
+	{% comment %} <div class="col-md-12 col-sm-12"> {% endcomment %}
+		<div class="full-card">
+				<form class="" method="POST" action= "" enctype="multipart/form-data">
+                    {% csrf_token %}
+				<!-- Start All Sec -->
+				<div class="tab-content">
+
+					<div id="settings" class="  active">
+						<div class="row no-mrg">
+							<h3>Add Caste</h3>
+							{% if form.errors %}
+                        <ul class="errorlist">
+                            {% for field in form %}
+                                {% if field.errors %}
+                                    <li style="color:red">{{ field.label }}: {{ field.errors|join:", " }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+							<div class="edit-pro">
+								<div class="form-outline mb-4">
+									<label>Caste Code</label>
+									<input type="text" class="form-control" placeholder="Enter Caste Code" value=""name="caste_code" id="caste_code " required >
+								</div>
+								<div class="form-outline mb-4">
+									<label>Caste Name</label>
+									<input type="text" class="form-control" placeholder="Enter caste_name" value=""name="caste_name" id="caste_name" required >
+								</div>
+								 <div class="form-outline mb-4">
+									<label>Specialization</label>
+
+                                        <select class="form-control" name="religion" value="" id="religion" required>
+                                            <center>
+                                            <option>Select Religion</option>
+												{% for item in reldata %}
+												{% if item.status != False %}
+												<option value="{{ item.id }}">{{item.religion_name}}</option>
+												{% endif %}
+                                            	{% endfor %}
+                                            </center>
+                                        </select>
+
+								</div>
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-primary theme-bg full-width">Add</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<!-- End Settings -->
+				</div>
+				<!-- Start All Sec -->
+            </form>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock %}

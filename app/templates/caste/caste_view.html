@@ -1,0 +1,47 @@
+{% extends "horzontal_dashboard.html" %}
+{% block content %}
+{% load static %}
+
+
+<!--    <div class="clearfix"></div>-->
+
+<!-- Title Header Start -->
+<div class="container justify-content-center">
+  <div><h1>{{title}}</h1> <a href="{% url 'app:Add_caste' %}" class="btn-sm  btn-primary" id="Add" style="float:right;text-decoration: none;">Add New Data</a></div>
+  <br>
+  <br>
+<table id="user-roles-records" class="table table-responsive-md table-bordered table-sm table-striped"cellspacing="0" width="100%">
+  <thead>
+    <tr>
+        <th>ID</th>
+      <th>Caste Name</th>
+      <th>Caste Code</th>
+        <th>religion </th>
+        <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in castedata %}
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.caste_code}}</td>
+        <td>{{item.caste_name}}</td>
+        <td>{{item.religion}}</td>
+
+     <td><a href="{% url 'app:edit_Caste' id=item.id %}" class="btn btn-sm btn-success bi bi-pencil-square"id="edit">Edit</a>
+            {% if item.status == True %}
+          <a href="{% url 'app:Status_update_Caste' action='active' id=item.id  %}"class="btn btn-sm btn-primary" id="activbtn"><i class="bi bi-eye"></i>Active </a>
+            {% else %}
+
+            <a href="{% url 'app:Status_update_Caste' action='deactive' id=item.id %}" class="btn btn-sm btn-warning" id="deactive"><i class="bi bi-eye-slash"></i>Disabled </a>
+
+          {% endif %}
+         <a href="{% url 'app:delete_Caste' id=item.id %}" class="btn btn-sm btn-danger" id="delete"><i class="bi bi-trash"></i>Delete</a> 
+      </td>
+    </tr>
+  {% endfor %}
+    <!-- Add more rows here -->
+  </tbody>
+</table>
+
+{% endblock %}

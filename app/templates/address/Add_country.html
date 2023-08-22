@@ -1,0 +1,54 @@
+{% extends "horzontal_dashboard.html" %}
+{% block content %}
+{% load static %}
+
+
+
+
+
+
+
+<div class="container d-flex justify-content-center">
+	{% comment %} <div class="col-md-12 col-sm-12"> {% endcomment %}
+		<div class="full-card">
+		  
+				
+				<form class="justify-content-center" method="POST" action= "" enctype="multipart/form-data">
+                    {% csrf_token %}
+						<div class="row no-mrg">
+							<h3>Add Country</h3>
+							{% if form.errors %}
+                        <ul class="errorlist">
+                            {% for field in form %}
+                                {% if field.errors %}
+                                    <li style="color:red">{{ field.label }}: {{ field.errors|join:", " }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+							<div class="edit-pro">
+								<div class="form-outline mb-4">
+									<label>Country Name</label>
+									<input type="text" class="form-control" placeholder="Enter Country Name" value=""name="name" id="name" required >
+								</div>
+								<div class="form-outline mb-4">
+									<label>Acronym</label>
+									<input type="text" class="form-control" placeholder="acronym" value=""name="acronym" id="acronym" required >
+								</div>
+								<div class="form-outline mb-4">
+									<label>Country Code</label>
+									<input type="text" class="form-control" placeholder="Enter Country Code" value=""name="country_code" id="country_code" required >
+								</div>
+
+								<div class="col-sm-16">
+									<button type="submit" class="btn btn-primary theme-bg full-width">Submit</button>
+								</div>
+						</div>
+						
+			  </form>
+			</div>
+</div>
+
+
+
+  {% endblock %}

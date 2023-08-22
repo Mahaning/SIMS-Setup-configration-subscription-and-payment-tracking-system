@@ -1,0 +1,358 @@
+{% extends "horzontal_dashboard.html" %}
+{% block content %}
+{% load static %}
+
+
+<style>
+  * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2; /* Light gray background for the body */
+}
+
+.row {
+    margin: 2px 2px 2px 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    display: contents;
+    padding: 0 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+/* Reset default styling for all elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Set global font and background styles */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Define styles for card and its content */
+.card {
+    margin: 0.5cm;
+    display: flex;
+    width: 450px;
+    background-color: #fffff0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+        --bs-card-height: 310px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #007BFF;
+    text-align: center;
+    transition: color 0.3s ease;
+    color:white;
+}
+
+.card-content p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.status {
+    float: right;
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+.text-color {
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+/* Apply hover effect */
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    background-color: #c1ffe9;
+
+}
+
+.card:hover .card-content h2,
+.card:hover .card-content h5,
+.card:hover .card-content p,
+.card:hover .status,
+.card:hover .text-color {
+    color: #000000;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+    .column {
+        flex: 0 0 25%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 0 0 100%;
+    }
+}
+
+a{
+text-decoration:none;
+}
+
+.office {
+    font-size: 15px;
+    white-space: pre-line;
+    max-width: 400px;
+}
+
+
+</style>
+
+</head>
+
+ <div class="row">
+  <div class="column">
+      <a href="">
+ <div class="card ">
+    <div class="card-content ">
+
+
+        <h2><strong><div class="card-header bg-info rounded"> Stream ({{ stream_data.count }})</div></strong></h2><hr style="color:red">
+    {% for i in stream_data%}
+          {% if forloop.counter <= 3 %}
+
+      <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+          <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+  {% endif %}
+      {% endfor %}
+    </div>
+  </div></a>
+  </div>
+
+      <div class="column">
+          <a href="">
+ <div class="card">
+    <div class="card-content ">
+        <h2><strong><div class="card-header bg-info rounded"> Level ({{ level_data.count }})</div></strong></h2><hr style="color:red">
+    {% for i in level_data%}
+          {% if forloop.counter <= 3 %}
+      <h5  value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+          <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+     {% endif %}
+      {% endfor %}
+    </div>
+  </div></a>
+      </div>
+
+      <div class="column">
+          <a href="">
+ <div class="card">
+    <div class="card-content ">
+        <h2><strong><div class="card-header bg-info rounded"> Specialization ({{ spl_data.count }})</div></strong></h2><hr style="color:red">
+    {% for i in spl_data%}
+          {% if forloop.counter <= 3 %}
+
+      <h5  value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+        <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+     {% endif %}
+      {% endfor %}
+    </div>
+  </div></a>
+      </div>
+
+      <div class="column">
+          <a href="">
+ <div class="card">
+    <div class="card-content ">
+        <h2><strong><div class="card-header bg-info rounded"> Qualification ({{ qlp_data.count }})</div></strong></h2><hr style="color:red">
+
+    {% for i in qlp_data %}
+          {% if forloop.counter <= 3 %}
+
+      <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.stream}}</strong></span>
+          <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+{% endif %}
+     
+      {% endfor %}
+    </div>
+  </div></a>
+      </div>
+
+      <div class="column">
+          <a href="">
+ <div class="card">
+    <div class="card-content">
+        <h2><strong><div class="card-header bg-info rounded"> Country ({{ country_data.count }})</div></strong></h2><hr style="color:red">
+
+    {% for i in country_data %}
+          {% if forloop.counter <= 3 %}
+      <h5 class=" " value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+          <span class="status"><b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+{% endif %}
+      {% endfor %}
+
+    </div>
+  </div></a>
+      </div>
+
+      <div class="column">
+          <a href="">
+ <div class="card">
+    <div class="card-content ">
+        <h2><strong><div class="card-header bg-info rounded"> State ({{ state_data.count }})</div></strong></h2><hr style="color:red">
+    {% for i in state_data%}
+        {% if forloop.counter <= 3 %}
+      <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+          <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div></a>
+      </div>
+
+
+      <div class="column">
+          <a href="">
+ <div class="card">
+    <div class="card-content ">
+        <h2><strong><div class="card-header bg-info rounded"> District ({{ dist_data.count }})</div></strong></h2><hr style="color:red">
+    {% for i in dist_data%}
+          {% if forloop.counter <= 3 %}
+
+      <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+          <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+{% endif %}      {% endfor %}
+    </div>
+  </div></a>
+</div>
+
+     <div class="column">
+         <a href="">
+ <div class="card">
+    <div class="card-content ">
+        <h2><strong><div class="card-header bg-info rounded"> City ({{ city.count }})</div></strong></h2><hr style="color:red">
+    {% for i in city%}
+                  {% if forloop.counter <= 3 %}
+      <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+          <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+     {% endif %}
+      {% endfor %}
+    </div>
+  </div></a>
+      </div>
+
+
+      <div class="column">
+          <a href="">
+ <div class="card">
+    <div class="card-content  ">
+        <h2><strong><div class="card-header bg-info rounded"> Pin Codes ({{ Pin.count }})</div></strong></h2><hr style="color:red">
+    {% for i in Pin%}
+                  {% if forloop.counter <= 3 %}
+      <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+          <span class="status"><b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+{% endif %}
+      {% endfor %}
+    </div>
+ </div></a>
+      </div>
+      <div class="column">
+        <a href="">
+<div class="card">
+   <div class="card-content ">
+       <h2><strong><div class="card-header bg-info rounded"> Religions ({{ Religion_data.count }})</div></strong></h2><hr style="color:red">
+   {% for i in Religion_data%}
+                 {% if forloop.counter <= 3 %}
+     <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.religion_name}}</strong></span>
+         <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+    {% endif %}
+     {% endfor %}
+   </div>
+ </div></a>
+     </div>
+     <div class="column">
+      <a href="">
+<div class="card">
+ <div class="card-content ">
+     <h2><strong><div class="card-header bg-info rounded"> Caste ({{ caste_data.count }})</div></strong></h2><hr style="color:red">
+ {% for i in caste_data%}
+               {% if forloop.counter <= 3 %}
+   <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+       <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+  {% endif %}
+   {% endfor %}
+ </div>
+</div></a>
+   </div>
+   <div class="column">
+    <a href="">
+<div class="card">
+<div class="card-content ">
+   <h2><strong><div class="card-header bg-info rounded"> Subcaste ({{ subcaste_data.count }})</div></strong></h2><hr style="color:red">
+{% for i in subcaste_data%}
+             {% if forloop.counter <= 3 %}
+ <h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+     <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+{% endif %}
+ {% endfor %}
+</div>
+</div></a>
+ </div>
+ 
+
+<div class="column">
+  <a href="">
+<div class="card">
+<div class="card-content ">
+ <h2><strong><div class="card-header bg-info rounded"> Languges ({{ Languge_data.count }})</div></strong></h2><hr style="color:red">
+{% for i in Languge_data%}
+           {% if forloop.counter <= 3 %}
+<h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+   <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+{% endif %}
+{% endfor %}
+</div>
+</div></a>
+</div>
+
+<div class="column">
+  <a href="">
+<div class="card">
+<div class="card-content ">
+ <h2><strong><div class="card-header bg-info rounded"> Designation ({{ designation_data.count }})</div></strong></h2><hr style="color:red">
+{% for i in designation_data%}
+           {% if forloop.counter <= 3 %}
+<h5 value="{{i.id}}"><b>Name:</b>&nbsp;<span class="text-color"><strong>{{i.name}}</strong></span>
+   <span class="status"> <b>Status:</b>&nbsp;<span class="text-color">{{i.status}}</span></span></h5><hr>
+{% endif %}
+{% endfor %}
+</div>
+</div></a>
+</div>
+
+ </div>
+
+
+ 
+
+
+
+{% endblock %}

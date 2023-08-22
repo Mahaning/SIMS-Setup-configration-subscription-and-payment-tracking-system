@@ -1,0 +1,99 @@
+{% extends "horzontal_dashboard.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container d-flex justify-content-center">
+	{% comment %} <div class="col-md-12 col-sm-12"> {% endcomment %}
+		<div class="full-card">
+				<form class="" method="POST" action= "" enctype="multipart/form-data">
+                    {% csrf_token %}
+				<!-- Start All Sec -->
+				<div class="tab-content">
+
+					<div id="settings" class="  active">
+						<div class="row no-mrg">
+							<h3>Add Qualification</h3>
+							{% if form.errors %}
+							<ul class="errorlist">
+								{% for field in form %}
+									{% if field.errors %}
+										<li style="color:red">{{ field.label }}: {{ field.errors|join:", " }}</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						{% endif %}
+							<div class="edit-pro">
+								<div class="form-outline mb-4">
+									<label>Qualification Name</label>
+									<input type="text" class="form-control" placeholder="Enter Qualification Name" value=""name="name" id="name" required >
+								</div>
+								<div class="form-outline mb-4">
+									<label>Acronym</label>
+									<input type="text" class="form-control" placeholder="Enter Acronym Qualification " value=""name="acronym" id="acronym" required >
+								</div>
+                               <div class="form-outline mb-4">
+									<label>Stream</label>
+
+                                        <select class="form-control" name="stream" value="" id="stream" required>
+                                            <center>
+												<option>Select Stream</option>
+												{% for item in stream %}
+												{% if item.status != False %}
+												<option value="{{ item.id }}">{{item.name}}</option>
+												{% endif %}
+                                            	{% endfor %}
+                                            </center>
+                                        </select>
+
+								</div>
+                               <div class="form-outline mb-4">
+									<label>Level</label>
+
+                                        <select class="form-control" name="level" value="" id="level" required>
+                                            <center>
+                                            <option>Select Level</option>
+												{% for item in level %}
+												{% if item.status != False %}
+												<option value="{{ item.id }}">{{item.name}}</option>
+												{% endif %}
+                                            	{% endfor %}
+                                            </center>
+                                        </select>
+
+								</div>
+                               <div class="form-outline mb-4">
+									<label>Specialization</label>
+
+                                        <select class="form-control" name="specialization" value="" id="specialization" required>
+                                            <center>
+                                            <option>Select specialization</option>
+												{% for item in spl %}
+												{% if item.status != False %}
+												<option value="{{ item.id }}">{{item.name}}</option>
+												{% endif %}
+                                            	{% endfor %}
+                                            </center>
+                                        </select>
+
+								</div>
+
+
+
+
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-primary theme-bg full-width">Add</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Settings -->
+				</div>
+				<!-- Start All Sec -->
+            </form>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock %}

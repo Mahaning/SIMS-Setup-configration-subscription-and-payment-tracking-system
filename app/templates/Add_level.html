@@ -1,0 +1,57 @@
+{% extends "horzontal_dashboard.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container d-flex justify-content-center">
+	{% comment %} <div class="col-md-12 col-sm-12"> {% endcomment %}
+		<div class="full-card">
+				<form class="" method="POST" action= "" enctype="multipart/form-data">
+                    {% csrf_token %}
+				<!-- Start All Sec -->
+				<div class="tab-content">
+
+					<div id="settings" class="  active">
+						<div class="row no-mrg">
+							<h3>Add Level</h3>
+							{% if form.errors %}
+                        <ul class="errorlist">
+                            {% for field in form %}
+                                {% if field.errors %}
+                                    <li style="color:red">{{ field.label }}: {{ field.errors|join:", " }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+							<div class="edit-pro">
+								<div class="form-outline mb-4">
+									<label>Level Name</label>
+									<input type="text" class="form-control" placeholder="Enter Level Name" value=""name="name" id="name" required >
+								</div>
+								<div class="form-outline mb-4">
+									<label>Acronym</label>
+									<input type="text" class="form-control" placeholder="Enter Acronym Level " value=""name="acronym" id="acronym" required >
+								</div>
+
+
+                                <div class="form-outline mb-4">
+									<label>Description</label>
+									<textarea class="form-control" placeholder="Write Level description" value="" name="description" id="description" required></textarea>
+								</div>
+
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-primary theme-bg full-width">Add</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Settings -->
+				</div>
+				<!-- Start All Sec -->
+            </form>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock %}
